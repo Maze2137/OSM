@@ -1,6 +1,8 @@
 package com.example.piotr.osm;
 
 import android.content.Context;
+
+import org.osmdroid.bonuspack.kml.KmlDocument;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         kmlDocument.parseGeoJSON(geoJSON);
         Drawable defaultMarker = getResources().getDrawable(R.drawable.marker_default);
         Bitmap defaultBitmap = ((BitmapDrawable) defaultMarker).getBitmap();
-        Paint.Style defaultStyle = new Paint.Style(defaultBitmap, 0x901010AA, 5f, 0x20AA1010);
+        Paint.Style defaultStyle = new Paint(defaultBitmap, 0x901010AA, 5f, 0x20AA1010);
         FolderOverlay geoJsonOverlay = (FolderOverlay) kmlDocument.mKmlRoot.buildOverlay(map, defaultStyle, null, kmlDocument);
         map.getOverlays().add(geoJsonOverlay);
         map.invalidate();
